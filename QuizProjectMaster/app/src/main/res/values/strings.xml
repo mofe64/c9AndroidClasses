@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">QuizProjectMaster</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_banner_text">Welcome %1$s</string>
+    <string name="progress_bar_text">%1$s / %2$s</string>
+    <string name="welcome">Welcome</string>
+    <string name="view_score">View Score</string>
+    <string name="next_question">Next Question</string>
+    <string name="score"> %1$s  / %2$s</string>
+    <string name="here_s_your_score">Here\'s your score</string>
+    <string name="play_again">Play again</string>
+</resources>
