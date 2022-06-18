@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.nubari.journal.databinding.FragmentLoginBinding
 
 class Login : Fragment() {
@@ -21,8 +22,16 @@ class Login : Fragment() {
         return loginBinding.root
 
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val registerLink = loginBinding.registerLink
+
+        registerLink.setOnClickListener {
+            val action = LoginDirections.actionLoginToRegister();
+            val navController = findNavController()
+            navController.navigate(action)
+        }
 
 
     }
