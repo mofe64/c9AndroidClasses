@@ -20,8 +20,11 @@ class RegisterViewModel : ViewModel() {
     private val api = RetrofitBuilder.gossipCentralAPI
 
     fun onEvent(event: AuthEvent) {
+        Log.i("register ", "register view model received event")
+        Log.i("register", event.toString())
         when (event) {
             is AuthEvent.RegistrationEvent -> {
+                Log.i("register", " registration event received")
                 val request = event.request
                 if (
                     request.email.isEmpty() ||
@@ -29,11 +32,14 @@ class RegisterViewModel : ViewModel() {
                     request.lastName.isEmpty() ||
                     request.password.isEmpty()
                 ) {
+                    Log.i("register", "missing field , set is form valid to false")
                     isFormValid.value = false
                     return
                 }
+                Log.i("register", "request valid calling register method")
                 register(request)
             }
+
         }
     }
 
@@ -42,7 +48,7 @@ class RegisterViewModel : ViewModel() {
         status.value = Resource.loading(data = null);
         viewModelScope.launch(Dispatchers.IO) {
             val threadInfo = Thread.currentThread().name
-            Log.i("register", "register running on thread $threadInfo")
+            Log.i("register", "register method running on thread $threadInfo")
             val result: RegistrationResponse?
             try {
                 result = api.register(request)

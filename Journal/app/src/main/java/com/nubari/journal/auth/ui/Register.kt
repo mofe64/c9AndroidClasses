@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import com.nubari.journal.R
 import com.nubari.journal.auth.events.AuthEvent
 import com.nubari.journal.auth.viewmodels.RegisterViewModel
 import com.nubari.journal.data.model.RegistrationRequest
@@ -26,6 +28,10 @@ class Register : Fragment() {
     private lateinit var registerBinding: FragmentRegisterBinding
     private val registerViewModel: RegisterViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +39,8 @@ class Register : Fragment() {
     ): View {
         registerBinding = FragmentRegisterBinding
             .inflate(inflater, container, false)
+
+
         return registerBinding.root
     }
 
@@ -47,9 +55,12 @@ class Register : Fragment() {
             navController.navigate(action)
 
         }
-        registerViewModel.isFormValid.observe(viewLifecycleOwner, {
-            it?.let { isValid ->
+        registerViewModel.isFormValid.observe(viewLifecycleOwner, { isValidOptional ->
+            Log.i("register frag", "is form valid value changed")
+            isValidOptional?.let { isValid ->
+                Log.i("register frag", "is form valid is $isValid")
                 if (!isValid) {
+                    Log.i("register frag", "displaying snackbar")
                     val snackbar = Snackbar.make(
                         registerBinding.root,
                         "Please complete all fields",
@@ -60,11 +71,14 @@ class Register : Fragment() {
             }
         })
         registerViewModel.status.observe(viewLifecycleOwner, {
+            Log.i("register frag", "status value changed")
             it?.let {
                 if (it.status == Status.LOADING) {
+                    Log.i("register frag", "status changed to loading")
                     btn.text = "Loading ..."
                 }
                 if (it.status == Status.ERROR) {
+                    Log.i("register frag", "status changed to error")
                     btn.text = "Register"
                     val snackbar = Snackbar.make(
                         registerBinding.root,
@@ -74,11 +88,13 @@ class Register : Fragment() {
                     snackbar.show()
                 }
                 if (it.status == Status.SUCCESS) {
+                    Log.i("register frag", "status changed to success")
                     val snackbar = Snackbar.make(
                         registerBinding.root,
                         "Registration Success",
                         Snackbar.LENGTH_SHORT
                     )
+                    Log.i("register frag", "navigating to login")
                     snackbar.setAction("Dismiss") {
                         val action = RegisterDirections.actionRegisterToLogin()
                         navController.navigate(action)
@@ -109,8 +125,5 @@ class Register : Fragment() {
             registerViewModel.onEvent(event)
 
         }
-
     }
-
-
 }

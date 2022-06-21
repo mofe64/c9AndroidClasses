@@ -4,10 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/drawable/colored_border.xml" value="0.23796296296296296" />
-        <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/drawable/dashed_border.xml" value="0.28615384615384615" />
+        <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/layout/content_main.xml" value="0.2864583333333333" />
+        <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/layout/fragment_login.xml" value="0.22735507246376813" />
         <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/layout/fragment_register.xml" value="0.2864583333333333" />
+        <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/layout/journal.xml" value="0.2864583333333333" />
+        <entry key="..\:/devStrawhat/Android/KotlinC12Classes/Journal/app/src/main/res/menu/menu_main.xml" value="0.2604166666666667" />
       </map>
     </option>
   </component>
