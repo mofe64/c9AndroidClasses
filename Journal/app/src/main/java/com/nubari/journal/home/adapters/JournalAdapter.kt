@@ -1,16 +1,18 @@
 package com.nubari.journal.home.adapters
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.nubari.journal.data.model.Journal
 import com.nubari.journal.databinding.JournalBinding
 
 class JournalAdapter(private val fragment: Fragment) :
     RecyclerView.Adapter<JournalAdapter.ViewHolder>() {
-    private val journals = listOf("How", "Hello", "Are", "You", "I", "Am", "Fine")
+    private var journals = listOf<Journal>()
 
     class ViewHolder(view: JournalBinding) : RecyclerView.ViewHolder(view.root) {
         val journalName = view.journalName
@@ -29,7 +31,7 @@ class JournalAdapter(private val fragment: Fragment) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val journal = journals[position]
-        holder.journalName.text = journal
+        holder.journalName.text = journal.title
 
         holder.card.setOnClickListener {
             Log.i("card view clicked", "card view")
@@ -38,6 +40,12 @@ class JournalAdapter(private val fragment: Fragment) :
 
     override fun getItemCount(): Int {
         return journals.size
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(data: List<Journal>) {
+        journals = data
+        notifyDataSetChanged()
     }
 
 }
