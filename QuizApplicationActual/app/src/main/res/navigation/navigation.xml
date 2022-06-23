@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/welcomeFragment2"
         android:name="com.nubari.quizapplicationactual.WelcomeFragment"
-        android:label="fragment_welcome"
+        android:label="Welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment2_to_quizFragment"
@@ -17,16 +17,20 @@
     <fragment
         android:id="@+id/quizFragment"
         android:name="com.nubari.quizapplicationactual.QuizFragment"
-        android:label="fragment_quiz"
+        android:label="Quiz"
         tools:layout="@layout/fragment_quiz" >
         <action
             android:id="@+id/action_quizFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.nubari.quizapplicationactual.ResultFragment"
-        android:label="fragment_result"
+        android:label="Result"
         tools:layout="@layout/fragment_result" >
         <action
             android:id="@+id/action_resultFragment_to_welcomeFragment2"

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.nubari.quizprojectmaster.databinding.FragmentQuizBinding
 
@@ -22,6 +23,24 @@ class QuizFragment : Fragment() {
     private var optionButtons: List<Button>? = null
     private var quizComplete: Boolean = false
     private var score: Int = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        savedInstanceState?.let {
+            val data = it["gameData"] as Bundle
+            score = data.getInt("score")
+        }
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        var bundle = bundleOf(
+            "questionObj" to questionsList[currentQuestion - 1],
+            "score" to 6
+        )
+        outState.putBundle("gameData", bundle)
+    }
 
 
     override fun onCreateView(
@@ -45,6 +64,7 @@ class QuizFragment : Fragment() {
         arguments?.let {
             name = QuizFragmentArgs.fromBundle(it).username
         }
+
         val welcomeTextWithPlaceholders = resources.getString(R.string.welcome_banner_text)
         val welcomeText = String.format(welcomeTextWithPlaceholders, name)
         val welcomeBanner = quizFragmentBinding.quizBanner
