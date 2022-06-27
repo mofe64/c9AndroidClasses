@@ -13,17 +13,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.nubari.introtocompose.R
+import com.nubari.introtocompose.ui.theme.peachColor
 
 @Composable
 fun MealTab(
     meal: String = "sushi",
-    active: Boolean = false
+    active: Boolean = false,
+    modifier: Modifier
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .width(140.dp)
             .height(50.dp),
-        shape = RoundedCornerShape(30)
+        shape = RoundedCornerShape(30),
+        elevation = if (active) 25.dp else 0.dp
     ) {
         Row(
             modifier = Modifier
@@ -48,7 +51,10 @@ fun MealTab(
                 contentDescription = ""
             )
             Spacer(modifier = Modifier.width(10.dp))
-            Text(text = meal)
+            Text(
+                text = meal,
+                color = if (active) peachColor else Color.Black
+            )
         }
     }
 }
