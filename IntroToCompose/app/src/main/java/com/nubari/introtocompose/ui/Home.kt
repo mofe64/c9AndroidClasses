@@ -97,13 +97,6 @@ fun Home() {
             )
         }
         Spacer(modifier = Modifier.height(25.dp))
-        val itemList = if (activeTab.value == "ramen") {
-            Util.generateRamenItem()
-        } else {
-            Util.generateSushiItem()
-        }
-        Log.i("home", "active tab is ${activeTab.value}")
-        Log.i("home", itemList.toString())
         if(activeTab.value == "ramen"){
             LazyRow() {
                 items(Util.generateRamenItem()) { item ->

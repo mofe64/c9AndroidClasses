@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.nubari.introtocompose.R
 
 
 @Composable
@@ -22,8 +21,6 @@ fun MealCard(
     meal: Meal,
     active: Boolean
 ) {
-    Log.i("meal-card", "is active $active")
-
     Card(
         modifier = modifier
             .width(210.dp)
